@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Pedidos</h2>
+<ul>
+    {% for order in orders %}
+    <li>{{ order }}</li>
+    {% endfor %}
+</ul>
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}

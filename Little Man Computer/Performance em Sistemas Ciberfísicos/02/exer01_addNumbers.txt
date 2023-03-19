@@ -1,0 +1,13 @@
+	INP
+	STA a
+
+	INP
+	STA b
+
+	LDA a
+      ADD b
+	OUT
+      HLT
+		
+a	DAT 
+b	DAT 

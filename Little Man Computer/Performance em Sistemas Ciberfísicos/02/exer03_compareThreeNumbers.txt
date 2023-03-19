@@ -1,0 +1,56 @@
+	INP
+	STA a
+
+	INP
+	STA b
+
+	INP
+	STA c
+
+
+	LDA b
+        SUB a
+	BRP jmp1
+
+	LDA a
+	STA temp
+	LDA b
+	STA a
+	LDA temp
+	STA b
+
+jmp1	LDA c
+        SUB b
+	BRP jmp2
+
+	LDA b
+	STA temp
+	LDA c
+	STA b
+	LDA temp
+	STA c
+
+
+jmp2	LDA b
+        SUB a
+	BRP jmp3
+
+	LDA a
+	STA temp
+	LDA b
+	STA a
+	LDA temp
+	STA b
+
+jmp3	LDA a
+	OUT
+	LDA b
+	OUT
+	LDA c
+	OUT
+
+
+temp	DAT
+a	DAT 
+b	DAT 
+c	DAT

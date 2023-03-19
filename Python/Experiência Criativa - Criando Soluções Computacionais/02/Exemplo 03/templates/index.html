@@ -1,0 +1,17 @@
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+        <h2>Meu Restaurante</h2>
+        <h3>Acesse o menu:</h3>
+        <ul>
+            {% for i in range(hrefs|length) %}
+            <li><a href="{{ hrefs[i] }}">{{ descriptions[i] }}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+
+</html>
