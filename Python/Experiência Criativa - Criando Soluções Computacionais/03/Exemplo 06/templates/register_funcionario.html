@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Registrar pedidos</h2>
+<form action="/save_funcionario" method="POST">
+    <p><input type="text" id="nome_funcionario" name="nome_funcionario" placeholder="Nome do Funcionário"></p>
+    <p>
+        <select id="tipo_funcionario" name="tipo_funcionario">
+            <option disabled selected>Tipo de Funcionário</option>
+            <option value="garçom">Garçom</option>
+            <option value="serviços gerais">Serviços gerais</option>
+        </select>
+    </p>
+    <button type="submit">Registar funcionário</button>
+</form>
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}

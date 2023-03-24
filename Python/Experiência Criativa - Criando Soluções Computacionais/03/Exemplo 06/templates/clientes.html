@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Clientes</h2>
+<ol>
+    {% for clnt in clnts %}
+    <li>{{ clnt }}</li>
+    {% endfor %}
+</ol>
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}

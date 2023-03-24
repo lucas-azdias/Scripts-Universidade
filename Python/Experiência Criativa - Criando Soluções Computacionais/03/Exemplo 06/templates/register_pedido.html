@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Registrar pedidos</h2>
+<form action="/save_pedido" method="POST">
+    <p><input type="text" id="nome_produto" name="nome_produto" placeholder="Nome do Produto"></p>
+    <p><input type="text" id="id_comanda" name="id_comanda" placeholder="ID da Comanda"></p>
+    <button type="submit">Registar pedido</button>
+</form>
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}

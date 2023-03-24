@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Funcionários</h2>
+{% if empls|length == 0 %}
+    <h4>Não há funcionários registrados</h4>
+{% else %}
+    <ol>
+        {% for empl in empls %}
+        <li>{{ empl }}</li>
+        {% endfor %}
+    </ol>
+{% endif %}
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content %}
+<h2>Pedidos</h2>
+{% if orders|length == 0 %}
+    <h4>Não há pedidos registrados</h4>
+{% else %}
+    <ul>
+        {% for order in orders %}
+        <li>{{ order }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<h4><a href="/">Voltar para o início</a></h4>
+{% endblock %}
