@@ -1,0 +1,47 @@
+{% extends "iot/iot_index.html" %}
+
+{% block content %}
+    <div class="vertical-center">
+        <div class="container forms shadow-sm p-3 mb-5 bg-white border border-secondary rounded">
+            <div class="row g-3 justify-content-center mx-4">
+                <div class="col-12 my-4 justify-content-left">
+                    <h1>Listar atuadores</h1>
+                </div>
+                <div class="col-12">
+                        {% if atuadores|length > 0 %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Modelo</th>
+                                        <th>Marca</th>
+                                        <th>Tensão</th>
+                                        <th>Descrição</th>
+                                        <th>Tipo</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for atuador in atuadores %}
+                                    <tr>
+                                        <td>{{atuador.id_sensor}}</td>
+                                        <td>{{atuador.name}}</td>
+                                        <td>{{atuador.model}}</td>
+                                        <td>{{atuador.brand}}</td>
+                                        <td>{{atuador.voltage}}</td>
+                                        <td>{{atuador.description}}</td>
+                                        <td>{{atuador.type}}</td>
+                                        <td>{{atuador.is_active}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>Não há atuadores cadastrados</p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

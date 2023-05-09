@@ -1,0 +1,6 @@
+{% macro input(label='', id='', name='', type='text') %}
+<div class="col-12 my-4">
+    <label for="{{ name }}" class="form-label">{{ label }}</label>
+    <input type="{{ type }}" class="form-control" id="{{ id }}" name="{{ name }}">
+</div>
+{% endmacro %}

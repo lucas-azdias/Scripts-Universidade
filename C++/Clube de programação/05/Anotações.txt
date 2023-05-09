@@ -1,0 +1,22 @@
+Na biblioteca algorithm tem a maior parte de estruturas de dados para C++
+
+TENTE SEMPRE USAR AUTO -> MAIS SEGURO E SEM PERDA DE PERFORMANCE
+
+Todas usam iterators
+	-> objetos que apontam para os elementos da estrutura de dados em sequência
+
+	ITERATORS em vector -> conjuntos com tamanho variável:
+		vector<type> -> biblioteca vector
+		- há o "for (const auto& num : numeros) {...}" (nativo)
+			auto -> tem o tipo definido automaticamente (se numeros for vector<int>, então num será int)
+		- usando o método begin e o método end -> criam iterators apontando para o começo e para o fim
+			-> dá para combinar com std::find(vector.begin(), vector.end(), [BUSCADO])
+				se encontrado, é diferente de vector.end() (é o próprio valor), se não é igual a ele
+
+	ITERATORS em set -> conjuntos sem repetição e sempre ordenado (idependente da posição que você tentar adicionar):
+		set<type> -> biblioteca set
+		- há o "for (const auto& num : numeros) {...}" (nativo)
+		
+
+FUNÇÃO LAMBDA EM C++
+	[](int num) { return num % 3 == 0; }

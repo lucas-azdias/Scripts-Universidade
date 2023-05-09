@@ -1,0 +1,5 @@
+﻿  exer01.cpp
+C:\Users\ladsw\OneDrive\Documentos\Scripts\#Universidade\C++\Clube de programação\03\exer01.cpp(30,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ladsw\OneDrive\Documentos\Scripts\#Universidade\C++\Clube de programação\03\exer01.cpp(31,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ladsw\OneDrive\Documentos\Scripts\#Universidade\C++\Clube de programação\03\exer01.cpp(32,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  03.vcxproj -> C:\Users\ladsw\OneDrive\Documentos\Scripts\#Universidade\C++\Clube de programação\03\x64\Debug\03.exe

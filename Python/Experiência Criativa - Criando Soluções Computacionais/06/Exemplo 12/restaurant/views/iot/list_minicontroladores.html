@@ -1,0 +1,47 @@
+{% extends "iot/iot_index.html" %}
+
+{% block content %}
+    <div class="vertical-center">
+        <div class="container forms shadow-sm p-3 mb-5 bg-white border border-secondary rounded">
+            <div class="row g-3 justify-content-center mx-4">
+                <div class="col-12 my-4 justify-content-left">
+                    <h1>Listar minicontroladores</h1>
+                </div>
+                <div class="col-12">
+                        {% if minicontroladores|length > 0 %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Modelo</th>
+                                        <th>Marca</th>
+                                        <th>Tensão</th>
+                                        <th>Descrição</th>
+                                        <th>Portas</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for minicontrolador in minicontroladores %}
+                                    <tr>
+                                        <td>{{minicontrolador.id_sensor}}</td>
+                                        <td>{{minicontrolador.name}}</td>
+                                        <td>{{minicontrolador.model}}</td>
+                                        <td>{{minicontrolador.brand}}</td>
+                                        <td>{{minicontrolador.voltage}}</td>
+                                        <td>{{minicontrolador.description}}</td>
+                                        <td>{{minicontrolador.ports}}</td>
+                                        <td>{{minicontrolador.is_active}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>Não há minicontroladores cadastrados</p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

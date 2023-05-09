@@ -1,0 +1,26 @@
+Tipo
+	Quando dado, define:
+	-> Conjunto de dados possíveis
+	-> Estrutura na memória
+	-> Regras de manipulação (operações possíveis)
+
+
+Estrutura de dados
+	array padrão do C -> estático (alta performance, mas pouca segurança e de difícil utilização)
+	std::array -> estático (definido já na compilação -> limitante (mas endereços dos valores são sequenciais))
+	std::vector -> dinâmico (definido na execução -> alta liberdade (mas endereços dos valores não são sequenciais necessariamente)
+	
+
+/*
+TypeCast explícito (para evitar Warnings)
+	-> static_cast<[type]>[variable]
+*/
+
+/*
+// Boa forma de varrer um vector
+void print_vector(const std::vector<int>& vec) {
+    for (int elem : vec) {
+        std::cout << elem << " ";
+    }
+    std::cout << std::endl;
+}*/

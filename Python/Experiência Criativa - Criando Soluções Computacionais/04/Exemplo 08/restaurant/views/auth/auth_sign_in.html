@@ -1,0 +1,23 @@
+{% extends "auth/auth_index.html" %}
+
+{% import "utils/macros.html" as macros %}
+
+{% block content %}
+    <div class="vertical-center">
+        <div class="container forms shadow-sm p-3 mb-5 bg-white border border-secondary rounded">
+            <form action="auth" method="POST" class="row g-3 justify-content-center mx-4">
+                <div class="col-12 my-4 justify-content-left">
+                    <h1>Sign-in</h1>
+                </div>
+                {{ macros.input("E-mail", id="email", name="email", type="email") }}
+                <div class="col-12 my-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="col-md-auto">
+                    <button type="submit" class="btn btn-primary mt-4">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

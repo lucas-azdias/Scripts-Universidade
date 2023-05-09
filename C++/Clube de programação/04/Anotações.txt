@@ -1,0 +1,4 @@
+Dá para usar o *Algoritmo de Kadene* para aumentar a eficiência de cálculos
+	-> divide-se um problema em partes menores
+	-> as partes menores que se repetem consistentemente devem ser guardas em alguma estrutura de dados para consulta futura
+	-> caso se deparar com a mesma operação, use o valor já computado armazenado na estrutura de dados

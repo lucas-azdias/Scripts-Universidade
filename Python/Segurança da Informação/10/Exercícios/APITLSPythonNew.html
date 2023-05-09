@@ -1,0 +1,641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <!-- saved from url=(0085)https://www.ppgia.pucpr.br/~jamhour/Pessoal/Graduacao/Ciencia/SocketsC/sslpython.html -->
+    <title>sslpython</title>
+  </head>
+  <body>
+    <h1>Autenticação X509 com Python TLS</h1>
+    <br>
+    <table style="text-align: left; width: 80%;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr style="background-color: rgb(204, 255, 255);">
+          <td style="vertical-align: top;">
+            <h1>Contexto<br>
+            </h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><code class="descclassname" style="padding: 0px 1px; background-color: rgb(255, 255, 255); font-size: 15.44px; font-family: monospace,sans-serif; color: rgb(34, 34, 34); font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span
+                style="color: rgb(0, 102, 0); font-weight: bold;">contexto</span><span
+                style="font-weight: bold;"><span style="color: rgb(0, 102, 0);">
+                  = </span>ssl</span>.<span style="font-weight: bold;">create_default_context</span>(purpose=<span
+                style="font-weight: bold;">Purpose</span>.SERVER_AUTH,
+              cafile=None, capath=None, cadata=None)<br>
+              <br>
+              Cria um contexto default com alta segurança:<br>
+              <br>
+              <span style="font-weight: bold; text-decoration: underline;">Purpose</span>:<br>
+              <br>
+              SERVER_AUTH = autentica o servidor (usado no código do cliente)<br>
+              CLIENT_AUTH = autentica o cliente (usado no código do servidor)<br>
+              <br>
+              <span style="font-weight: bold; text-decoration: underline;">cafile</span>
+              = caminho para um arquivo de uma ou mais CAs (concatenadas) em
+              formato PEM<br>
+              <span style="font-weight: bold; text-decoration: underline;">capath</span>
+              = caminho para a pasta que contém os certificados de CA<br>
+              <span style="font-weight: bold; text-decoration: underline;">cadata</span>
+              = variável do tipo string com os certificados no formato PEM</code><br>
+            <br>
+            <hr style="width: 100%; height: 2px;"><br>
+            Funções para alterar o <span style="color: rgb(0, 102, 0); font-weight: bold;">contexto</span>:<br>
+            <br>
+            O <span style="color: rgb(0, 102, 0); font-weight: bold;">contexto</span>
+            é um objeto do tipo SSLContext. É possível alterar o contexto
+            default com diversas funções:<br>
+            <br>
+            <span style="font-weight: bold;"></span><span style="font-weight: bold;">#
+              Carrega certificados CA e Root do local padrão do sistema</span><br>
+            SSLContext.load_default_certs(purpose=Purpose.SERVER_AUTH)<br>
+            <br>
+            <span style="font-weight: bold;"># Define autoridades específias
+              para validar certificados</span><br>
+            SSLContext.load_verify_locations(cafile=None, capath=None,
+            cadata=None)<br>
+            <br>
+            <span style="font-weight: bold;"># Define o local padrão dos
+              certificados</span><br>
+            SSLContext.set_default_verify_paths()<br>
+            <br>
+            <span style="font-weight: bold;"># Define lista de ciphers que podem
+              ser usados</span><br>
+            SSLContext.set_ciphers(ciphers)<br>
+            <br>
+            <span style="font-weight: bold;"># Carrega uma chave privada e o
+              certificado correspondente <br>
+            </span>SSLContext.load_cert_chain(certfile, keyfile=None,
+            password=None)<br>
+            <br>
+            <span style="font-weight: bold;"># Define modo de validação do
+              certificado </span><br>
+            SSLContext.verify_mode=<span class="reference internal" style="color: black; font-family: &quot;Lucida Grande&quot;,Arial,sans-serif; font-size: 16px; font-style: normal; font-weight: bold; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"><code
+                class="xref py py-data docutils literal notranslate" style="padding: 0px 1px; background-color: transparent; font-size: 15.44px; font-family: monospace,sans-serif; font-weight: normal;"><span
+                  class="pre" style="">CERT_NONE, CERT_OPTIONAL ou
+                  CERT_REQUIRED.</span></code></span><br>
+            <br>
+            Default é node: qualquer certificado é aceito e erros de validação
+            não abortam a conexão<br>
+            <br>
+            <hr style="width: 100%; height: 2px;"><br>
+            Cria um socket seguro (<span style="font-weight: bold;">ssl.SSLSoccket</span>)
+            a partir de um socket normal (<span style="font-weight: bold;">socket.socket</span>):<br>
+            <br>
+            <span style="font-weight: bold;">SSLContext.wrap_socket</span>(<span
+              style="font-weight: bold;">sock</span>, server_side=False,
+            do_handshake_on_connect=True, server_hostname=None, session=None)<br>
+            <br>
+            <span style="font-weight: bold;">server_side</span>: indica se o
+            socket é do tipo cliente ou servidor (True=cliente, False=servidor)<br>
+            <span style="font-weight: bold;">do_handshake_on_connect</span>:
+            controla se o handshake é automático ou chamado pela aplicação<br>
+            <span style="font-weight: bold;">server_hostname</span>: usado pelo
+            cliente para solicitar um host específico em um servidor com
+            múltiplos certificados<br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <br>
+    <table style="text-align: left; width: 80%;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr style="background-color: rgb(255, 255, 204);">
+          <td style="vertical-align: top;">
+            <h2>Servidor (Certificado Auto-Assinado)</h2>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #6a9955;">#!/usr/bin/python3</span></div><br><div><span style="color: #c586c0;">import</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">socket</span></div><div><span
+style="color: #c586c0;">import</span><span style="color: #d4d4d4;"> </span><span
+style="color: #4ec9b0;">ssl</span></div><div><span style="color: #c586c0;">from</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">threading</span><span
+style="color: #d4d4d4;"> </span><span style="color: #c586c0;">import</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">Thread</span></div><br><div><span
+style="color: #9cdcfe;">server_ip</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'127.0.0.1'</span></div><div><span style="color: #9cdcfe;">server_port</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #b5cea8;">9001</span></div><div><span
+style="color: #9cdcfe;">my_cert</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'server.crt'</span></div><div><span style="color: #9cdcfe;">my_key</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #ce9178;">'server.key'</span></div><div><span
+style="color: #9cdcfe;">peer_cert</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'client.crt'</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">prepara_contexto</span><span
+style="color: #d4d4d4;">():</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #4ec9b0;">ssl</span><span style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">create_default_context</span><span
+style="color: #d4d4d4;">(</span><span style="color: #4ec9b0;">ssl</span><span style="color: #d4d4d4;">.</span><span
+style="color: #4ec9b0;">Purpose</span><span style="color: #d4d4d4;">.</span><span
+style="color: #4fc1ff;">CLIENT_AUTH</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">verify_mode</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #4ec9b0;">ssl</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">CERT_REQUIRED</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">load_cert_chain</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">certfile</span><span
+style="color: #d4d4d4;">=</span><span style="color: #9cdcfe;">my_cert</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">keyfile</span><span
+style="color: #d4d4d4;">=</span><span style="color: #9cdcfe;">my_key</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">.</span><span
+style="color: #dcdcaa;">load_verify_locations</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">cafile</span><span style="color: #d4d4d4;">=</span><span
+style="color: #9cdcfe;">peer_cert</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">return</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">contexto</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">verifica_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">):</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #ce9178;">'ciphers negociados: '</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">c</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.shared_ciphers(): </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">c</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'cipher selecionado: '</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.cipher())</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">cert</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.getpeercert()</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #6a9955;"># print(contexto.cert_store_stats())</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #6a9955;"># for k,v in cert.items(): print(f'{k}={v}')</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">cert</span><span
+style="color: #d4d4d4;">[</span><span style="color: #ce9178;">'subject'</span><span
+style="color: #d4d4d4;">]: </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span
+style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">][</span><span
+style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">] == </span><span
+style="color: #ce9178;">'commonName'</span><span style="color: #d4d4d4;">: </span><span
+style="color: #9cdcfe;">identidade</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span
+style="color: #d4d4d4;">][</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">]</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">cert</span><span
+style="color: #d4d4d4;">[</span><span style="color: #ce9178;">'issuer'</span><span
+style="color: #d4d4d4;">]: </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span
+style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">][</span><span
+style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">] == </span><span
+style="color: #ce9178;">'commonName'</span><span style="color: #d4d4d4;">: </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #ce9178;">'Certificado por'</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span
+style="color: #d4d4d4;">][</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">])</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">identidade</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">recebe_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">):</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #9cdcfe;">cid</span><span
+style="color: #d4d4d4;">=</span><span style="color: #ce9178;">'desconhecido'</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; (</span><span style="color: #9cdcfe;">csock</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">caddr</span><span
+style="color: #d4d4d4;">) = </span><span style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">.accept()</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #569cd6;">f</span><span style="color: #ce9178;">'recebi conexão de: </span><span
+style="color: #569cd6;">{</span><span style="color: #9cdcfe;">caddr</span><span
+style="color: #569cd6;">}</span><span style="color: #ce9178;">'</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">try</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">.wrap_socket(</span><span
+style="color: #9cdcfe;">csock</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">server_side</span><span style="color: #d4d4d4;">=</span><span
+style="color: #569cd6;">True</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">cid</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #dcdcaa;">verifica_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">cid</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #c586c0;">except</span><span style="color: #d4d4d4;"> </span><span
+style="color: #4ec9b0;">Exception</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">as</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">e</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">e</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #c586c0;">return</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">None</span><span style="color: #d4d4d4;">, </span><span
+style="color: #ce9178;">'LIAR!!!'</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">trata_cliente</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">cid</span><span style="color: #d4d4d4;">): &nbsp;</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">try</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">while</span><span style="color: #d4d4d4;"> </span><span
+style="color: #569cd6;">True</span><span style="color: #d4d4d4;">:</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">data</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.recv(</span><span style="color: #b5cea8;">4096</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">not</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">data</span><span style="color: #d4d4d4;">: </span><span
+style="color: #c586c0;">break</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">else</span><span style="color: #d4d4d4;">: </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #569cd6;">f</span><span style="color: #ce9178;">'</span><span style="color: #569cd6;">{</span><span
+style="color: #9cdcfe;">cid</span><span style="color: #569cd6;">}</span><span style="color: #ce9178;"> enviou'</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">data</span><span
+style="color: #d4d4d4;">.decode())</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #c586c0;">except</span><span style="color: #d4d4d4;"> </span><span
+style="color: #4ec9b0;">Exception</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">as</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">e</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">e</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">finally</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #569cd6;">f</span><span style="color: #ce9178;">'O cliente </span><span
+style="color: #569cd6;">{</span><span style="color: #9cdcfe;">cid</span><span style="color: #569cd6;">}</span><span
+style="color: #ce9178;"> encerrou'</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.shutdown(</span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">SHUT_RDWR</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.close()</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">__name__</span><span
+style="color: #d4d4d4;"> == </span><span style="color: #ce9178;">"__main__"</span><span
+style="color: #d4d4d4;">:</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #dcdcaa;">prepara_contexto</span><span style="color: #d4d4d4;">()</span></div><br><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">with</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">(</span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">AF_INET</span><span
+style="color: #d4d4d4;">, </span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">SOCK_STREAM</span><span
+style="color: #d4d4d4;">) </span><span style="color: #c586c0;">as</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">:</span></div><br><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">s</span><span
+style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">bind</span><span style="color: #d4d4d4;">((</span><span
+style="color: #9cdcfe;">server_ip</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">server_port</span><span style="color: #d4d4d4;">))</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">s</span><span
+style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">listen</span><span
+style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">5</span><span style="color: #d4d4d4;">)</span></div><br><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #c586c0;">while</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">True</span><span style="color: #d4d4d4;">:</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #ce9178;">"Aguardando clientes"</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">,</span><span
+style="color: #9cdcfe;">cid</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #dcdcaa;">recebe_conexao</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">is</span><span style="color: #d4d4d4;"> </span><span
+style="color: #569cd6;">not</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">None</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">t</span><span style="color: #d4d4d4;"> = </span><span style="color: #4ec9b0;">Thread</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">target</span><span
+style="color: #d4d4d4;">=</span><span style="color: #dcdcaa;">trata_cliente</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">args</span><span
+style="color: #d4d4d4;">=(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">,</span><span style="color: #9cdcfe;">cid</span><span style="color: #d4d4d4;">))</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">t</span><span style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">start</span><span
+style="color: #d4d4d4;">()</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">else</span><span style="color: #d4d4d4;">:</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #ce9178;">'Uma conexão ilegal foi bloqueada'</span><span style="color: #d4d4d4;">)</span></div></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p> </p>
+    <br>
+    <table style="width: 80%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr style="background-color: rgb(255, 255, 204);">
+          <td style="vertical-align: top;">
+            <h2>Cliente (Certificado Auto-Assinado)</h2>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div
+style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #c586c0;">import</span><span style="color: #d4d4d4;"> </span><span
+style="color: #4ec9b0;">socket</span></div><div><span style="color: #c586c0;">import</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">ssl</span></div><br><div><span
+style="color: #9cdcfe;">host_addr</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'127.0.0.1'</span></div><div><span style="color: #9cdcfe;">host_port</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #b5cea8;">9001</span></div><div><span
+style="color: #9cdcfe;">peer_name</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'server.bcc.com'</span></div><div><span style="color: #9cdcfe;">peer_cert</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #ce9178;">'server.crt'</span></div><div><span
+style="color: #9cdcfe;">my_cert</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #ce9178;">'client.crt'</span></div><div><span style="color: #9cdcfe;">my_key</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #ce9178;">'client.key'</span></div></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div
+style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">prepara_contexto</span><span
+style="color: #d4d4d4;">():</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #4ec9b0;">ssl</span><span style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">create_default_context</span><span
+style="color: #d4d4d4;">(</span><span style="color: #4ec9b0;">ssl</span><span style="color: #d4d4d4;">.</span><span
+style="color: #4ec9b0;">Purpose</span><span style="color: #d4d4d4;">.</span><span
+style="color: #4fc1ff;">SERVER_AUTH</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">verify_mode</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #4ec9b0;">ssl</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">CERT_REQUIRED</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">load_cert_chain</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">certfile</span><span
+style="color: #d4d4d4;">=</span><span style="color: #9cdcfe;">my_cert</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">keyfile</span><span
+style="color: #d4d4d4;">=</span><span style="color: #9cdcfe;">my_key</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">.</span><span
+style="color: #dcdcaa;">load_verify_locations</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">cafile</span><span style="color: #d4d4d4;">=</span><span
+style="color: #9cdcfe;">peer_cert</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #6a9955;">#context.check_hostname = False</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">return</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">contexto</span></div></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div
+style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">verifica_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">):</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #ce9178;">'ciphers negociados: '</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">c</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.shared_ciphers(): </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">c</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #dcdcaa;">print</span><span
+style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'cipher selecionado: '</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">.cipher())</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">cert</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.getpeercert()</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #6a9955;"># print(contexto.cert_store_stats())</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #6a9955;"># for k,v in cert.items(): print(f'{k}={v}')</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">cert</span><span
+style="color: #d4d4d4;">[</span><span style="color: #ce9178;">'subject'</span><span
+style="color: #d4d4d4;">]: </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span
+style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">][</span><span
+style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">] == </span><span
+style="color: #ce9178;">'commonName'</span><span style="color: #d4d4d4;">: </span><span
+style="color: #9cdcfe;">identidade</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span
+style="color: #d4d4d4;">][</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">]</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">for</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">in</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">cert</span><span
+style="color: #d4d4d4;">[</span><span style="color: #ce9178;">'issuer'</span><span
+style="color: #d4d4d4;">]: </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">i</span><span
+style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">][</span><span
+style="color: #b5cea8;">0</span><span style="color: #d4d4d4;">] == </span><span
+style="color: #ce9178;">'commonName'</span><span style="color: #d4d4d4;">: </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #ce9178;">'Certificado por'</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;">[</span><span style="color: #b5cea8;">0</span><span
+style="color: #d4d4d4;">][</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">])</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">identidade</span></div></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #569cd6;">def</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">faz_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">):</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">try</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;">.wrap_socket(</span><span
+style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">server_side</span><span
+style="color: #d4d4d4;">=</span><span style="color: #569cd6;">False</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">server_hostname</span><span
+style="color: #d4d4d4;">=</span><span style="color: #9cdcfe;">peer_name</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.connect((</span><span
+style="color: #9cdcfe;">host_addr</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">host_port</span><span style="color: #d4d4d4;">))</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">sid</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #dcdcaa;">verifica_conexao</span><span
+style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">)</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">, </span><span
+style="color: #9cdcfe;">sid</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #c586c0;">except</span><span style="color: #d4d4d4;"> </span><span
+style="color: #4ec9b0;">Exception</span><span style="color: #d4d4d4;"> </span><span
+style="color: #c586c0;">as</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">e</span><span
+style="color: #d4d4d4;">:</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">e</span><span style="color: #d4d4d4;">)</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #c586c0;">return</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">None</span><span style="color: #d4d4d4;">, </span><span
+style="color: #ce9178;">'LIAR!!!'</span></div></div>
+            <br>
+            <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">__name__</span><span
+style="color: #d4d4d4;"> == </span><span style="color: #ce9178;">"__main__"</span><span
+style="color: #d4d4d4;">:</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">contexto</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #dcdcaa;">prepara_contexto</span><span style="color: #d4d4d4;">() </span></div><br><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; </span><span style="color: #c586c0;">with</span><span
+style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">(</span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">AF_INET</span><span
+style="color: #d4d4d4;">, </span><span style="color: #4ec9b0;">socket</span><span
+style="color: #d4d4d4;">.</span><span style="color: #9cdcfe;">SOCK_STREAM</span><span
+style="color: #d4d4d4;">) </span><span style="color: #c586c0;">as</span><span style="color: #d4d4d4;"> </span><span
+style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">:</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">sid</span><span style="color: #d4d4d4;"> = </span><span
+style="color: #dcdcaa;">faz_conexao</span><span style="color: #d4d4d4;">(</span><span
+style="color: #9cdcfe;">s</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">contexto</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">ssock</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">is</span><span style="color: #d4d4d4;"> </span><span
+style="color: #569cd6;">None</span><span style="color: #d4d4d4;">: </span><span
+style="color: #dcdcaa;">exit</span><span style="color: #d4d4d4;">() &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #dcdcaa;">print</span><span style="color: #d4d4d4;">(</span><span
+style="color: #569cd6;">f</span><span style="color: #ce9178;">'Conectado em </span><span
+style="color: #569cd6;">{</span><span style="color: #9cdcfe;">sid</span><span style="color: #569cd6;">}</span><span
+style="color: #ce9178;">'</span><span style="color: #d4d4d4;">)</span></div><br><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #c586c0;">while</span><span
+style="color: #d4d4d4;"> </span><span style="color: #569cd6;">True</span><span style="color: #d4d4d4;">:</span></div><div><span
+style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #9cdcfe;">msg</span><span
+style="color: #d4d4d4;"> = </span><span style="color: #dcdcaa;">input</span><span
+style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'mensagem: (ou &lt;ENTER&gt; para encerrar): '</span><span
+style="color: #d4d4d4;">)</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #c586c0;">if</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">not</span><span
+style="color: #d4d4d4;"> </span><span style="color: #9cdcfe;">msg</span><span style="color: #d4d4d4;">: </span><span
+style="color: #c586c0;">break</span></div><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.</span><span
+style="color: #dcdcaa;">send</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">msg</span><span
+style="color: #d4d4d4;">.</span><span style="color: #dcdcaa;">encode</span><span
+style="color: #d4d4d4;">())</span></div><br><div><span style="color: #d4d4d4;">&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="color: #9cdcfe;">ssock</span><span style="color: #d4d4d4;">.</span><span
+style="color: #dcdcaa;">close</span><span style="color: #d4d4d4;">()</span></div></div>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p><br>
+    </p>
+    <table style="text-align: left; width: 80%;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr style="background-color: rgb(204, 255, 255);">
+          <td style="vertical-align: top;">
+            <h2>EXERCICIO 1:</h2>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+            <b>PASSO 1</b>: Gere os certificados para os clientes e os
+            servidores no modelo AUTO-ASSINADO<br>
+            <br>
+            openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout
+            server.key -out server.crt -subj
+            "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=server.bcc.com"<br>
+            <br>
+            openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout
+            client.key -out client.crt -subj
+            "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=Cliente ID1"<br>
+            <br>
+            openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout
+            client2.key -out client2.crt -subj
+            "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=Cliente ID2"<br>
+            <br>
+            <br>
+            <b>PASSO 2</b>: Verifique o funcionamento com um Servidor e um
+            Cliente<br>
+            <br>
+            <b>PASSO 3</b>: Faça as alterações necessárias para conectar 2
+            clientes<br>
+            <br>
+            Windows: copy client.crt + client2.crt allclients.crt<br>
+            Linux:&nbsp; cate client.crt client2.crt &gt; allclients.crt<br>
+            <br>
+            <b>PASSO 4</b>: Teste o servidor com 2 conexões simultâneas<br>
+            <br>
+            <b style="color: red;">ENTREGA DO EXERCICIO 1</b>: copie para o seu
+            relatório o resultado mostrado na tela do servidor no passo 4<br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table style="text-align: left; width: 80%;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr style="background-color: rgb(204, 255, 255);">
+          <td style="vertical-align: top;">
+            <h2>EXERCICIO 2:</h2>
+            <h2> </h2>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+            <b>PASSO 1</b>: Gere os certificados no modelo AUTORIDADE
+            CERTIFICADORA<br>
+            <br>
+            openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout
+            bcc_CA.key -out bcc_CA.crt -subj "/C=US/O=Politecnica/CN=BCC
+            Politecnica"<br>
+            <br>
+            openssl req -newkey rsa:2048 -days 365 -nodes -keyout client.key
+            -out client.csr -subj "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=Cliente
+            ID1"<br>
+            <br>
+            openssl req -newkey rsa:2048 -days 365 -nodes -keyout client2.key
+            -out client2.csr -subj "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=Cliente
+            ID2"<br>
+            <br>
+            openssl req -newkey rsa:2048 -days 365 -nodes -keyout server.key
+            -out server.csr -subj
+            "/C=BR/ST=Parana/L=Curitiba/O=BCC/CN=server.bcc.com"<br>
+            <br>
+            openssl x509 -days 365 -req -in client.csr -CA bcc_CA.crt -CAkey
+            bcc_CA.key -CAcreateserial -out client.crt<br>
+            <br>
+            openssl x509 -days 365 -req -in client2.csr -CA bcc_CA.crt -CAkey
+            bcc_CA.key -CAcreateserial -out client2.crt<br>
+            <br>
+            openssl x509 -days 365 -req -in server.csr -CA bcc_CA.crt -CAkey
+            bcc_CA.key -CAcreateserial -out server.crt<br>
+            <br>
+            <b>PASSO 2</b>: Modifique os programas do servidor e dos clientes
+            para que operem no novo modelo.<br>
+            <br>
+            <b>PASSO 3</b>: Faça o teste com dois clientes simultaneos<br>
+            <br>
+            <br>
+            <b style="color: red;">ENTREGA DO EXERCICIO 2</b>: copie para o seu
+            relatório o resultado mostrado na tela do servidor no passo 3<br>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="text-align: left; width: 80%;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr style="background-color: rgb(255, 204, 153);">
+          <td style="vertical-align: top;">
+            <h2>Entrega da Atividade</h2>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+            Um relatório com o print dos resultados dos exercícios 1 e 2.<br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </body>
+</html>

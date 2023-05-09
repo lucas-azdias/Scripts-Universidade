@@ -1,0 +1,25 @@
+{% extends "iot/iot_index.html" %}
+
+{% import "utils/macros.html" as macros %}
+
+{% block content %}
+    <div class="vertical-center">
+        <div class="container forms shadow-sm p-3 mb-5 bg-white border border-secondary rounded">
+            <form action="save_minicontrolador" method="POST" class="row g-3 justify-content-center mx-4">
+                <div class="col-12 my-4 justify-content-left">
+                    <h1>Cadastrar minicontrolador</h1>
+                </div>
+                {{ macros.input("Nome", id="name", name="name", type="text") }}
+                {{ macros.input("Modelo", id="model", name="model", type="text") }}
+                {{ macros.input("Marca", id="brand", name="brand", type="text") }}
+                {{ macros.input("Tensão", id="voltage", name="voltage", type="text") }}
+                {{ macros.input("Portas", id="ports", name="ports", type="text") }}
+                {{ macros.checkbox("Está ativado?", id="is_active", name="is_active", is_checked=true) }}
+                {{ macros.textarea("Descrição", placeholder="Digite a descrição para o minicontrolador", id="description", name="description", rows=10, cols=30) }}
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary mt-4 float-right">Cadastrar minicontrolador</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

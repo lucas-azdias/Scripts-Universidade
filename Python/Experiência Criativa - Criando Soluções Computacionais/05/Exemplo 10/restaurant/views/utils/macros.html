@@ -1,0 +1,20 @@
+{% macro input(label='', placeholder='', id='', name='', type='text', box_size=12) %}
+<div class="col-{{ box_size }} my-4">
+    <label for="{{ id }}" class="form-label">{{ label }}</label>
+    <input placeholder="{{ placeholder }}" type="{{ type }}" class="form-control" id="{{ id }}" name="{{ name }}">
+</div>
+{% endmacro %}
+
+{% macro checkbox(label='', id='', name='', box_size=12, is_checked=false) %}
+<div class="col-{{ box_size }} my-4 pl-5">
+    <input type="checkbox" class="form-check-input" id="{{ id }}" name="{{ name }}" {{ "checked" if is_checked else "" }}>
+    <label for="{{ id }}" class="form-check-label">{{ label }}</label>
+</div>
+{% endmacro %}
+
+{% macro textarea(label='', placeholder='', id='', name='', rows=10, cols=30, box_size=12) %}
+<div class="col-{{ box_size }} my-4">
+    <label for="{{ id }}" class="form-label">{{ label }}</label>
+    <textarea class="form-control" placeholder="{{ placeholder }}" id="{{ id }}" name="{{ name }}" rows="{{ rows }}" cols="{{ cols }}"></textarea>
+</div>
+{% endmacro %}
