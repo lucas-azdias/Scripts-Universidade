@@ -2,7 +2,7 @@ package com.main;
 
 import java.util.Scanner;
 
-public class Progress√£oAritm√©tica {
+public class Progress„oAritmÈtica {
 
 	public static void main(String[] args) {
 		

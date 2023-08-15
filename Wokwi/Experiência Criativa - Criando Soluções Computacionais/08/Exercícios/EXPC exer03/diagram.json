@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "FunNy LuAz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 40.67,
+      "left": -95.99,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": 41.21, "left": -289.96, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw2", "top": -29.86, "left": -254.37, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw3", "top": -29.19, "left": -186.37, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw4", "top": 38.8, "left": -223.03, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw5", "top": -3.49, "left": 97.65, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw6", "top": -3.14, "left": 40.51, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 59.68,
+      "left": 153.53,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "sw5:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw6:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw5:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw6:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw5:3", "esp:D23", "blue", [ "v0" ] ],
+    [ "sw6:3", "esp:D22", "blue", [ "v0" ] ],
+    [ "sw1:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw2:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw3:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw4:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw1:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw2:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw4:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw3:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw1:3", "esp:D32", "gold", [ "v0" ] ],
+    [ "sw2:3", "esp:D33", "gold", [ "v22.93", "h135.2" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "bz1:2", "esp:D4", "red", [ "v0" ] ],
+    [ "sw3:3", "esp:D14", "green", [ "v0" ] ],
+    [ "sw4:3", "esp:D13", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

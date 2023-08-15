@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "FunNy LuAz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    { "type": "wokwi-7segment", "id": "sevseg1", "top": 68.18, "left": 265.09, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "sevseg1:B", "esp:D23", "blue", [ "v0" ] ],
+    [ "sevseg1:A", "esp:D22", "blue", [ "v0" ] ],
+    [ "sevseg1:F", "esp:D21", "blue", [ "v0" ] ],
+    [ "sevseg1:G", "esp:D19", "blue", [ "v0" ] ],
+    [ "sevseg1:E", "esp:D18", "blue", [ "v-1.13", "h-46.77", "v-50.67" ] ],
+    [ "sevseg1:D", "esp:D5", "blue", [ "v11.53", "h-66.37", "v-58.67" ] ],
+    [ "sevseg1:C", "esp:D4", "blue", [ "v21.53", "h-96.24", "v-60" ] ],
+    [ "sevseg1:COM.1", "esp:VIN", "green", [ "h0.02", "v72.2", "h-330.67", "v-50" ] ]
+  ],
+  "dependencies": {}
+}

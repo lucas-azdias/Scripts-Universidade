@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "author": "FunNy LuAz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    { "type": "wokwi-7segment", "id": "sevseg1", "top": 68.18, "left": 265.09, "attrs": {} },
+    { "type": "wokwi-dip-switch-8", "id": "sw1", "top": 88.01, "left": -128.1, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 169.27,
+      "left": -141.07,
+      "attrs": { "color": "black" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "sevseg1:B", "esp:D23", "blue", [ "v0" ] ],
+    [ "sevseg1:A", "esp:D22", "blue", [ "v0" ] ],
+    [ "sevseg1:F", "esp:D21", "blue", [ "v0" ] ],
+    [ "sevseg1:G", "esp:D19", "blue", [ "v0" ] ],
+    [ "sevseg1:E", "esp:D18", "blue", [ "v-1.13", "h-46.77", "v-50.67" ] ],
+    [ "sevseg1:D", "esp:D5", "blue", [ "v11.53", "h-66.37", "v-58.67" ] ],
+    [ "sevseg1:C", "esp:D4", "blue", [ "v21.53", "h-96.24", "v-60" ] ],
+    [ "sevseg1:COM.1", "esp:VIN", "red", [ "h0.02", "v72.2", "h-330.67", "v-50" ] ],
+    [ "sw1:1b", "esp:D34", "gold", [ "v0" ] ],
+    [ "sw1:2b", "esp:D35", "gold", [ "v0" ] ],
+    [ "sw1:3b", "esp:D32", "gold", [ "v0" ] ],
+    [ "sw1:4b", "esp:D33", "gold", [ "v0" ] ],
+    [ "sw1:8b", "esp:D25", "green", [ "h0" ] ],
+    [ "btn1:2.r", "esp:3V3", "red", [ "h9.15", "v29.24", "h176", "v-71.33" ] ],
+    [ "btn1:1.r", "esp:D12", "gold", [ "v-0.44", "h56.48", "v-52" ] ],
+    [ "btn1:2.l", "sw1:1a", "red", [ "h-14.02", "v-37.83", "h39.42" ] ],
+    [ "btn1:2.l", "sw1:2a", "red", [ "h-22.67", "v-42.64", "h53.34" ] ],
+    [ "btn1:2.l", "sw1:3a", "red", [ "h-29.4", "v-48.4", "h69.67" ] ],
+    [ "btn1:2.l", "sw1:4a", "red", [ "h-36.61", "v-54.17", "h86.48" ] ],
+    [ "btn1:2.r", "sw1:8a", "red", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

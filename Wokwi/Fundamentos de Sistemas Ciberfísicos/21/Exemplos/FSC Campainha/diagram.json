@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "FunNy LuAz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 1.73,
+      "left": 44.65,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 16.8,
+      "left": 164.81,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 132.87,
+      "left": 246.23,
+      "attrs": { "color": "black" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 17.27,
+      "left": 213.2,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D2", "gold", [ "v0" ] ],
+    [ "esp:3V3", "btn1:2.l", "red", [ "v0" ] ],
+    [ "esp:D4", "btn1:1.l", "blue", [ "h53.32", "v-2.85" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led2:A", "esp:D15", "gold", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

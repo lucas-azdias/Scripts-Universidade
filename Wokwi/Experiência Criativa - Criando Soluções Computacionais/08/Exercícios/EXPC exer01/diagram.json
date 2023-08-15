@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 49.73, "left": 23.76, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": 13.47, "left": -209.04, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw2", "top": 12.13, "left": -159.7, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "sw1:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw2:2", "esp:VIN", "red", [ "v0" ] ],
+    [ "sw1:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw2:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sw1:3", "esp:D13", "blue", [ "v0" ] ],
+    [ "sw2:3", "esp:D12", "blue", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

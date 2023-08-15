@@ -1,0 +1,16 @@
+Instructions
+Estas são sugestões de problemas que você pode resolver para praticar as Estruturas de Dados básicas da biblioteca algorithms
+
+Pilha (Stack): Tarefa: Desenvolva um editor de texto básico com funcionalidade de desfazer/refazer. Cada ação realizada no editor deve ser registrada para possibilitar o desfazer/refazer. As estruturas de dados sugeridas são Pilha e Lista.
+
+Fila (Queue): Tarefa: Implemente um sistema de gerenciamento para uma clínica médica. Garanta que os pacientes sejam atendidos na ordem em que chegam e que esta ordem seja corretamente rastreada. As estruturas de dados sugeridas são Fila e Lista.
+
+Mapa (Map): Tarefa: Projete um software para uma biblioteca. Este software deve manter um registro de todos os livros disponíveis e a quantidade de cada um deles. As estruturas de dados sugeridas são Mapa e Hash Table.
+
+Deque (Double Ended Queue): Tarefa: Crie um aplicativo para um restaurante gerenciar pedidos de clientes. O aplicativo deve permitir que os clientes escolham se seus pedidos serão entregues primeiro (como um pedido VIP) ou adicionados à fila normal. As estruturas de dados sugeridas são Deque e Lista.
+
+Lista (List): Tarefa: Construa um aplicativo de música que permita aos usuários criar suas próprias playlists. Os usuários devem ser capazes de adicionar, remover e mover músicas dentro da playlist. As estruturas de dados sugeridas são Lista e Deque.
+
+Hash Table: Tarefa: Desenvolva um sistema de gerenciamento de alunos para uma universidade. O sistema deve armazenar e recuperar rapidamente os detalhes do aluno com base em seu número de matrícula. As estruturas de dados sugeridas são Hash Table e Mapa.
+
+Priority_queue: Tarefa: Projete um sistema operacional básico que gerencia processos. Alguns processos têm prioridade mais alta que outros e devem ser executados primeiro. As estruturas de dados sugeridas são Priority_queue e Lista.

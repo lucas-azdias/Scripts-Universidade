@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "FunNy LuAz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": -56,
+      "left": -82.19,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 16.19, "left": 100.37, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -11.84,
+      "left": 56.56,
+      "attrs": { "color": "black" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:VIN", "servo1:V+", "red", [ "h-25.29", "v65.56", "h154.16", "v-193.92" ] ],
+    [ "esp:GND.2", "servo1:GND", "black", [ "h-34.98", "v86.22", "h153.68", "v-218.64" ] ],
+    [ "esp:D15", "servo1:PWM", "blue", [ "h0" ] ],
+    [ "btn1:2.l", "esp:3V3", "red", [ "h-23.87", "v83.62" ] ],
+    [ "btn1:1.l", "esp:D4", "gold", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

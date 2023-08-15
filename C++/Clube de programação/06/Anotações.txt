@@ -1,0 +1,83 @@
+Toda estruturas de dados é composta por:
+	1. Arquitetura de memória
+	2. Conjunto de funções (no mínimo inserção, leitura e remoção, dentre os opcionais)
+
+
+Pilha (Stack)
+	std::stack<type> -> biblioteca stack
+	Como base tem o LIFO (Last-In, First-Out)
+	É "Turing Complet" -> pode resolver qualquer problema apenas com ela como estrutura de dados
+	push -> adiciona no topo (último)
+	top -> mostra o topo (último)
+	pop -> remove o topo (último)
+	empty -> se está vazia
+	size -> mostra tamanho
+
+
+Fila (Queue)
+	std::queue<type> -> biblioteca queue
+	Como base tem o FIFO (First-In, First-Out)
+	push -> adiciona no fim
+	front -> mostra a frente (primeiro)
+	back -> mostra o fim
+	pop -> remove a frente (primeiro)
+	empty -> se está vazia
+	size -> mostra tamanho
+
+
+Lista (List)
+	std::list<type> -> biblioteca list
+	É dinâmica e mais completa (podendo percorrer com o iterator), mas é mais lenta
+	push_front
+	push_back
+	pop_front
+	pop_back
+	front -> mostra primeiro
+	back -> mostra último
+	begin -> iterator do começo
+	end -> iterator do fim
+	reverse -> inverte a lista
+	sort -> ordena a lista
+
+
+Mapa (Map)
+	std::map<key, value> -> biblioteca map
+	É key-based -> chaves como índices (acesso rápido)
+	Expõe o iterator -> dá para percorrer
+	É ordenado por padrão -> chaves em ordem (precisa ser posta assim)
+	NÃO PODE USAR replace no mapa -> altera chave e valor -> precisa dar um find na key e substituir o seu valor
+	Para inserir no mapa, precisa de um par de valores -> std::pair<type1, type2>(a, b)
+
+
+Mapa não ordenado (Unordered Map)
+	std::unordered_map<key, value> -> biblioteca unordered_map
+	É key-based -> chaves como índices (acesso rápido)
+	Expõe o iterator -> dá para percorrer
+	Mais rápido do que o Mapa
+	Não precisa por as chaves em ordem
+	É o que leva ao dicionário do Python (ambos são baseados na HashTable)
+	É usado pelos bancos de dados
+	NÃO PODE USAR replace no mapa -> altera chave e valor -> precisa dar um find na key e substituir o seu valor
+	Para inserir no mapa, precisa de um par de valores -> std::pair<type1, type2>(a, b)
+
+	IDEAL -> Para gerar chaves únicas para os valores, é possível usar a função de Hash para o valor que será armazenado
+			 Ou seja, key = hash(value)
+			 (Dá para usar a função de hash padrão do C++ na biblioteca functional -> std::hash<type>
+			 (template é o tipo do valor))
+			 ideal é "size_t key = hash(value)" -> size_t adapta o espaço da memória para guardar completamente a chave gerada automaticamente
+
+	Para encontrar chave de valor -> percorrer com iterator é ruim (IDEAL É USAR O HASH e buscar gerando o hash do valor)
+
+
+Fila de prioridade (Priority Queue)
+	std::priority_queue<type, std::vector<type> (o que será usado para ), order_function (std::greater é o mais simples)> -> biblioteca queue
+	É uma fila, usando o FIFO (First-In, First-Out)
+	Tem a prioridade implementada (fica em ordem, mas pode usar várias funções de comparação diferentes)
+	Tem um valor padrão
+
+
+Deque (Deque)
+	std::deque<type> -> na biblioteca deque
+	Expõe o iterator -> dá para percorrer
+	Para olhar para frente e para trás dele (e remover ambos também)
+	E dar roll (ir girando ele (em círculo))

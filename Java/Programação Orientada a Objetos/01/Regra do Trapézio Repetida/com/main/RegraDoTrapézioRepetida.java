@@ -3,7 +3,7 @@ package com.main;
 import java.util.Scanner;
 import java.lang.Math;
 
-public class RegraDoTrapÃ©zioRepetida {
+public class RegraDoTrapézioRepetida {
 
 	public static void main(String[] args) {
 		
