@@ -1,0 +1,1 @@
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\WIN32-MSVC-Exemplo_13 - Criar e Remover uma Tarefa dentro de Outra\Debug\Exemplo_13.exe

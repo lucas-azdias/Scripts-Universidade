@@ -1,0 +1,1 @@
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\WIN32-MSVC-Exemplo_12 - Obter e Alterar Prioridade de Outra Tarefa\Debug\Exemplo_12.exe

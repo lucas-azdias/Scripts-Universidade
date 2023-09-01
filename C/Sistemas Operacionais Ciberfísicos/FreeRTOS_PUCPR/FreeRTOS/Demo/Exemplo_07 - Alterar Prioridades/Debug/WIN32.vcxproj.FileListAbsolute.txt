@@ -1,0 +1,1 @@
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\WIN32-MSVC-Exemplo_07 - Alterar Prioridades\Debug\Exemplo_07.exe

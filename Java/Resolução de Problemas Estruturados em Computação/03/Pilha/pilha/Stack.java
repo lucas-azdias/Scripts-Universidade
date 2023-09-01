@@ -11,7 +11,7 @@ public class Stack<T> {
 	}
 	
 	public void put(T element) throws IndexOutOfBoundsException {
-		if (top < array.length) {
+		if (!isFull()) {
 			top++;
 			array[top] = element;
 		} else {
@@ -21,7 +21,7 @@ public class Stack<T> {
 	
 	@SuppressWarnings("unchecked")
 	public T get() throws IndexOutOfBoundsException {
-		if (top > -1) {
+		if (!isEmpty()) {
 			T gotten = (T) array[top];
 			array[top] = null;
 			top--;
@@ -32,15 +32,15 @@ public class Stack<T> {
 	}
 	
 	public boolean isFull() {
-		if (top >= array.length) {
-			return true;
-		} else {
-			return false;
-		}
+		return top >= array.length - 1;
 	}
 	
 	public boolean isEmpty() {
-		return !isFull();
+		return top <= -1;
+	}
+	
+	public int length() {
+		return array.length;
 	}
 	
 	public String toString() {
