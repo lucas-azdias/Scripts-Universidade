@@ -1,0 +1,31 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  Run-time-stats-utils.c
+  tasks.c
+  queue.c
+  port.c
+  list.c
+  main.c
+  example.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(25,9): warning C4057: 'initializing': 'unsigned char *' differs in indirection to slightly different base types from 'char [13]'
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(26,9): warning C4057: 'initializing': 'unsigned char *' differs in indirection to slightly different base types from 'char [13]'
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(40,61): warning C4090: 'function': different 'const' qualifiers
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(41,61): warning C4090: 'function': different 'const' qualifiers
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(117,41): warning C4130: '==': logical operation on address of string constant
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(117,31): warning C4057: '==': 'unsigned char *' differs in indirection to slightly different base types from 'char [13]'
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(120,41): warning C4057: 'function': 'const char *' differs in indirection to slightly different base types from 'unsigned char *'
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(125,41): warning C4057: 'function': 'const char *' differs in indirection to slightly different base types from 'unsigned char *'
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\example.c(88,33): warning C4100: 'pvParameters': unreferenced formal parameter
+  basic_io.c
+  timers.c
+  heap_5.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Source\portable\MemMang\heap_5.c(344,6): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  event_groups.c
+  croutine.c
+  trcUser.c
+  trcKernelPort.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS-Plus\Source\FreeRTOS-Plus-Trace\trcKernelPort.c(121,68): warning C4305: '=': truncation from 'int' to 'objectHandleType'
+  trcKernel.c
+  trcHardwarePort.c
+  trcBase.c
+  Generating Code...
+  WIN32.vcxproj -> C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_16 - Adicionar e  Remover Estrutura na Fila\Debug\Exemplo_16.exe
