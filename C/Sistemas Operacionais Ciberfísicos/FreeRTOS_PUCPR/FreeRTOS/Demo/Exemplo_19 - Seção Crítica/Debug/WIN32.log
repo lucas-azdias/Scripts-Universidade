@@ -1,0 +1,28 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  Run-time-stats-utils.c
+  tasks.c
+  queue.c
+  port.c
+  list.c
+  main.c
+  example.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(34,6): warning C4013: 'kbhit' undefined; assuming extern returning int
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(55,19): warning C4100: 'pvParameters': unreferenced formal parameter
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(71,19): warning C4100: 'pvParameters': unreferenced formal parameter
+  basic_io.c
+  timers.c
+  heap_5.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Source\portable\MemMang\heap_5.c(344,6): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  event_groups.c
+  croutine.c
+  trcUser.c
+  trcKernelPort.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS-Plus\Source\FreeRTOS-Plus-Trace\trcKernelPort.c(121,68): warning C4305: '=': truncation from 'int' to 'objectHandleType'
+  trcKernel.c
+  trcHardwarePort.c
+  trcBase.c
+  Generating Code...
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(52): warning C4702: unreachable code
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(84): warning C4702: unreachable code
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\example.c(68): warning C4702: unreachable code
+  WIN32.vcxproj -> C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_19 - Seção Crítica\Debug\Exemplo_19.exe

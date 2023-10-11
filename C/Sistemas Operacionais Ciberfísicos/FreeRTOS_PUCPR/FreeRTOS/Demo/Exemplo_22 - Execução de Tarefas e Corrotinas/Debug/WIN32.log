@@ -1,0 +1,27 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+cl : command line  warning D9007: '/Gm' requires '/Zi or /ZI'; option ignored
+  trcBase.c
+  trcHardwarePort.c
+  trcKernel.c
+  trcKernelPort.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS-Plus\Source\FreeRTOS-Plus-Trace\trcKernelPort.c(121,68): warning C4305: '=': truncation from 'int' to 'objectHandleType'
+  trcUser.c
+  croutine.c
+  event_groups.c
+  heap_5.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Source\portable\MemMang\heap_5.c(344,6): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  timers.c
+  basic_io.c
+  example.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_22 - Execução de Tarefas e Corrotinas\example.c(29,3): warning C4127: conditional expression is constant
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_22 - Execução de Tarefas e Corrotinas\example.c(42,18): warning C4100: 'pvParameters': unreferenced formal parameter
+  main.c
+  list.c
+  port.c
+  queue.c
+  tasks.c
+  Run-time-stats-utils.c
+  Generating Code...
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_22 - Execução de Tarefas e Corrotinas\example.c(80): warning C4702: unreachable code
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_22 - Execução de Tarefas e Corrotinas\example.c(67): warning C4702: unreachable code
+  WIN32.vcxproj -> C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_22 - Execução de Tarefas e Corrotinas\Debug\Exemplo_22.exe

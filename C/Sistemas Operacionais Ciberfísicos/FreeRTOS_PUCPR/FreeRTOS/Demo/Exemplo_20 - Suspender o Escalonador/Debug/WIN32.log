@@ -1,0 +1,6 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  example.c
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_20 - Suspender o Escalonador\example.c(74,6): warning C4013: 'kbhit' undefined; assuming extern returning int
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_20 - Suspender o Escalonador\example.c(22): warning C4702: unreachable code
+C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_20 - Suspender o Escalonador\example.c(44): warning C4702: unreachable code
+  WIN32.vcxproj -> C:\Users\ladsw\OneDrive\Documents\Scripts\#Universidade\C\Sistemas Operacionais Ciberfísicos\FreeRTOS_PUCPR\FreeRTOS\Demo\Exemplo_20 - Suspender o Escalonador\Debug\Exemplo_20.exe
