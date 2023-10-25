@@ -1,0 +1,177 @@
+# IPs
+CLIENTE:  192.168.56.101
+SERVIDOR: 192.168.56.102
+
+#--------------------------------------------------------
+PERGUNTA 1: 
+
+Copie o conteúdo do comando: ./easy-rsa show-ca
+
+* Notice:
+
+  Showing  details for 'ca'.
+  This file is stored at:
+  * /etc/openvpn/easy-rsa/pki/ca.crt
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            6d:bd:20:ca:dd:94:8a:cc:81:c4:92:bb:96:82:4e:2c:d7:92:13:5b
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            commonName                = Redes Convergentes
+        Validity
+            Not Before: Oct 19 22:23:59 2023 GMT
+            Not After : Oct 16 22:23:59 2033 GMT
+        Subject:
+            commonName                = Redes Convergentes
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE
+            X509v3 Subject Key Identifier:
+                45:24:5E:A0:F1:12:EA:32:89:58:91:F4:95:2F:44:19:7D:55:92:98
+            X509v3 Authority Key Identifier:
+                keyid:45:24:5E:A0:F1:12:EA:32:89:58:91:F4:95:2F:44:19:7D:55:92:98
+                DirName:/CN=Redes Convergentes
+                serial:6D:BD:20:CA:DD:94:8A:CC:81:C4:92:BB:96:82:4E:2C:D7:92:13:5B
+            X509v3 Key Usage:
+                Certificate Sign, CRL Sign
+
+RESPONDA: Para que serve este certificado?
+Ele serve para emitir outros certificados para os servidores e clientes da organização.
+
+#---------------------------------------------------------
+PERGUNTA 2: 
+
+Copie o conteúdo do comando: ./easy-rsa show-cert server
+
+* Notice:
+
+  Showing cert details for 'server'.
+  This file is stored at:
+  * /etc/openvpn/easy-rsa/pki/issued/server.crt
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            c2:a4:cc:6c:b0:8f:39:ba:bf:af:38:e1:67:c3:18:b2
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            commonName                = Redes Convergentes
+        Validity
+            Not Before: Oct 19 22:29:18 2023 GMT
+            Not After : Jan 21 22:29:18 2026 GMT
+        Subject:
+            commonName                = server
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:FALSE
+            X509v3 Subject Key Identifier:
+                7A:A6:DB:DD:FB:1E:5C:24:04:07:C4:87:2D:43:6B:EE:E7:B6:0A:34
+            X509v3 Authority Key Identifier:
+                keyid:45:24:5E:A0:F1:12:EA:32:89:58:91:F4:95:2F:44:19:7D:55:92:98
+                DirName:/CN=Redes Convergentes
+                serial:6D:BD:20:CA:DD:94:8A:CC:81:C4:92:BB:96:82:4E:2C:D7:92:13:5B
+            X509v3 Extended Key Usage:
+                TLS Web Server Authentication
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name:
+                DNS:server
+
+RESPONDA: Para que serve este certificado?
+Serve para provar que a máquina "server" pertence a VPN da organização.
+
+#---------------------------------------------------------
+PERGUNTA 3: 
+
+Copie o conteúdo do comando: ./easy-rsa show-cert client_Bob
+
+* Notice:
+
+  Showing cert details for 'client_Bob'.
+  This file is stored at:
+  * /etc/openvpn/easy-rsa/pki/issued/client_Bob.crt
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            84:84:9d:9d:96:4f:00:ca:66:3c:48:3e:b8:0d:3a:0f
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            commonName                = Redes Convergentes
+        Validity
+            Not Before: Oct 19 22:44:10 2023 GMT
+            Not After : Jan 21 22:44:10 2026 GMT
+        Subject:
+            commonName                = client_Bob
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:FALSE
+            X509v3 Subject Key Identifier:
+                37:0C:6E:9D:B9:3F:B6:2A:DF:42:24:6D:AB:E0:44:85:42:32:BF:EE
+            X509v3 Authority Key Identifier:
+                keyid:45:24:5E:A0:F1:12:EA:32:89:58:91:F4:95:2F:44:19:7D:55:92:98
+                DirName:/CN=Redes Convergentes
+                serial:6D:BD:20:CA:DD:94:8A:CC:81:C4:92:BB:96:82:4E:2C:D7:92:13:5B
+            X509v3 Extended Key Usage:
+                TLS Web Client Authentication
+            X509v3 Key Usage:
+                Digital Signature
+
+RESPONDA: Ao final do comando você teve que digitar um password. A quem ele pertence: ca ou server?
+Esta é a senha do administrador da organização autorizando o cliente a receber um certificado
+
+#---------------------------------------------------------
+PERGUNTA 4: 
+
+Copie o conteúdo do comando: ip addr
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:b9:a9:08 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3
+       valid_lft 79870sec preferred_lft 79870sec
+    inet6 fe80::a00:27ff:feb9:a908/64 scope link
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:b4:9c:18 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global dynamic enp0s8
+       valid_lft 423sec preferred_lft 423sec
+    inet6 fe80::a00:27ff:feb4:9c18/64 scope link
+       valid_lft forever preferred_lft forever
+4: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 500
+    link/none
+    inet 10.9.8.2/24 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::b300:8aa7:76dd:5622/64 scope link stable-privacy
+       valid_lft forever preferred_lft forever
+
+Copie o conteúdo do comando: ip route
+
+default via 10.0.2.2 dev enp0s3
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15
+10.9.8.0/24 dev tun0 proto kernel scope link src 10.9.8.2
+192.168.56.0/24 dev enp0s8 proto kernel scope link src 192.168.56.101
+
+RESPONDA: Quais endereços estão sendo direcionados para a VPN?
+Os IPs da faixa 10.9.8.0/24.
+
+#---------------------------------------------------------
+
+PERGUNTA 5: O teste1.cap transmitiu os dados usando VPN? Foi possível ver o password?
+NÃO.
+
+PERGUNTA 6: O teste2.cap transmitiu os dados usando VPN? Foi possível ver o password?
+SIM.
+
+PERGUNTA 7: Qual a condição para fazer o tráfego passar pela VPN?
+10.9.8.0/24.
