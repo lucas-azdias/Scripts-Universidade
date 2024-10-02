@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# ACESSO GET: curl http://localhost:1879/eco
+# ACESSO PATCH: url http://localhost:1879/eco/<MSG> -X PATCH
+
 from flask import Flask
 from flask_restful import Resource, Api
 
@@ -18,7 +21,7 @@ class Eco:
 class EcoApi(Resource):
 
     def get(self):
-        return {"cont": eco.count}
+        return {"count": eco.count}
     
     def patch(self, msg):
         return {"resp": eco.diga(msg)}
